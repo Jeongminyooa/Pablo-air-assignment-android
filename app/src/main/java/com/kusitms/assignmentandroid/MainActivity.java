@@ -13,6 +13,7 @@ import android.util.Log;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
