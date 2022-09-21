@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Assignment Android</string>
+    <string name="home">QR을 스캔하여\n 배송지의 잠금장치를 해제하세요!</string>
+    <string name="order">나의 주문내역</string>
 </resources>

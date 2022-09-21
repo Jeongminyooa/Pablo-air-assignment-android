@@ -6,9 +6,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 
 import com.kakao.sdk.user.UserApiClient;
+import com.kusitms.assignmentandroid.databinding.ActivityLoginBinding;
+import com.kusitms.assignmentandroid.databinding.ActivityMainBinding;
 import com.kusitms.assignmentandroid.dto.LoginResult;
 import com.kusitms.assignmentandroid.retrofit.RetrofitAPI;
 import com.kusitms.assignmentandroid.retrofit.RetrofitClient;
@@ -20,7 +21,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "사용자";
-    private ImageButton btnLogin;
+    private ActivityLoginBinding binding;
 
     private RetrofitAPI retrofitAPI;
     private SharedPreferences preferences;
@@ -28,11 +29,10 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        btnLogin = findViewById(R.id.btnLogin);
-
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -42,6 +42,8 @@ public class LoginActivity extends AppCompatActivity {
                 else{
                     accountLogin();
                 }
+
+                finish();
             }
         });
     }
@@ -80,6 +82,8 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
                     LoginResult loginResult = response.body();
                     Log.d(TAG, loginResult.toString());
+
+                    // jwt 저장
                 }
 
                 @Override
