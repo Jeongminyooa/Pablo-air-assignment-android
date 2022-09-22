@@ -10,9 +10,11 @@ public class GlobalApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        instance = this;
 
         // 네이티브 앱 키로 초기화
         KakaoSdk.init(this, getString(R.string.kakao_app_api));
+
+        // 싱글톤 패턴으로 SharedPreference 관리
+        PrefsHelper.init(getApplicationContext());
     }
 }

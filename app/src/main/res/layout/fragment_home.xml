@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/tvName"
-        android:layout_width="wrap_content"
+        android:layout_width="204dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="80dp"
@@ -23,15 +23,16 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
+        android:gravity="center"
         android:text="@string/home"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/ivQRCode"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        app:srcCompat="@drawable/tick_dynamic_color" />
+        android:layout_marginTop="15dp"
+        app:srcCompat="@android:drawable/stat_notify_sync" />
 
 </LinearLayout>

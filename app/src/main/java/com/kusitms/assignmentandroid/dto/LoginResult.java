@@ -32,4 +32,11 @@ public class LoginResult {
                 ", accessToken=" + accessToken +
                 ", refreshToken=" + refreshToken + " }";
     }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+    public String getNickName() {
+        return nickName;
+    }
 }

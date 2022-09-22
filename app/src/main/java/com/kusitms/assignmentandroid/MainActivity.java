@@ -30,10 +30,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
-
-
         // 리스너 등록
         SettingListener();
         // 처음 시작할 탭 설정

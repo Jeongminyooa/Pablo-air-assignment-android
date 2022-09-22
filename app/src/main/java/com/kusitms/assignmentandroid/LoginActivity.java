@@ -2,6 +2,7 @@ package com.kusitms.assignmentandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
 
     private RetrofitAPI retrofitAPI;
-    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +42,6 @@ public class LoginActivity extends AppCompatActivity {
                 else{
                     accountLogin();
                 }
-
-                finish();
             }
         });
     }
@@ -76,14 +74,18 @@ public class LoginActivity extends AppCompatActivity {
         RetrofitClient retrofitClient = RetrofitClient.getInstance();
 
         if(retrofitClient != null) {
-            retrofitAPI = RetrofitClient.getRetrofitAPI();
+            retrofitAPI = RetrofitClient.getRetrofitAPI(null);
             retrofitAPI.getLoginUser(accessToken).enqueue(new Callback<LoginResult>() {
                 @Override
                 public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
                     LoginResult loginResult = response.body();
                     Log.d(TAG, loginResult.toString());
 
-                    // jwt 저장
+                    PrefsHelper.write("token", loginResult.getAccessToken());
+                    PrefsHelper.write("nickName", loginResult.getNickName());
+
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
                 }
 
                 @Override

@@ -1,5 +1,7 @@
 package com.kusitms.assignmentandroid.dto;
 
+
+
 public class ItemVO {
     String storeName;
     String orderStatus;
