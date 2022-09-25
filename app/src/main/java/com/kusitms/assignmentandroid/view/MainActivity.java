@@ -35,12 +35,15 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId()) {
                     case R.id.tab_home:
-                        Log.d(TAG, "tab_home");
                         getSupportFragmentManager().beginTransaction().replace(R.id.lyHome, new HomeFragment())
                                 .commit();
                         return true;
                     case R.id.tab_order:
                         getSupportFragmentManager().beginTransaction().replace(R.id.lyHome, new OrderFragment())
+                                .commit();
+                        return true;
+                    case R.id.tab_mypage:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.lyHome, new MypageFragment())
                                 .commit();
                         return true;
                 }
