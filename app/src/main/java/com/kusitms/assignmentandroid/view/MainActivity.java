@@ -1,22 +1,15 @@
-package com.kusitms.assignmentandroid;
+package com.kusitms.assignmentandroid.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationBarView;
+import com.kusitms.assignmentandroid.R;
 import com.kusitms.assignmentandroid.databinding.ActivityMainBinding;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 
 public class MainActivity extends AppCompatActivity {

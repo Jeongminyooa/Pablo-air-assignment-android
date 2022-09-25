@@ -3,6 +3,7 @@ package com.kusitms.assignmentandroid;
 import android.app.Application;
 
 import com.kakao.sdk.common.KakaoSdk;
+import com.kusitms.assignmentandroid.utils.PrefsHelper;
 
 public class GlobalApplication extends Application {
     private static GlobalApplication instance;

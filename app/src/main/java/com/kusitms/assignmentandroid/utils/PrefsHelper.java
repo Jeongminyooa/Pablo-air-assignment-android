@@ -1,4 +1,4 @@
-package com.kusitms.assignmentandroid;
+package com.kusitms.assignmentandroid.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

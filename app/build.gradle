@@ -61,4 +61,8 @@ dependencies {
     // dependencies for lombok
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    // RecyclerView
+    implementation "androidx.recyclerview:recyclerview:1.2.1"
+
 }

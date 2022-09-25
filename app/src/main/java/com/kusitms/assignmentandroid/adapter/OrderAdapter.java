@@ -1,17 +1,15 @@
-package com.kusitms.assignmentandroid;
+package com.kusitms.assignmentandroid.adapter;
 
-import android.content.Context;
-import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.cursoradapter.widget.CursorAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.kusitms.assignmentandroid.R;
 import com.kusitms.assignmentandroid.databinding.RecyclerItemOrderBinding;
-import com.kusitms.assignmentandroid.dto.ItemVO;
+import com.kusitms.assignmentandroid.retrofit.dto.ItemVO;
 
 import java.util.ArrayList;
 

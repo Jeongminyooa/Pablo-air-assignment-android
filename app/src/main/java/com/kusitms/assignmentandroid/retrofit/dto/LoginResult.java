@@ -1,4 +1,4 @@
-package com.kusitms.assignmentandroid.dto;
+package com.kusitms.assignmentandroid.retrofit.dto;
 
 import androidx.annotation.NonNull;
 

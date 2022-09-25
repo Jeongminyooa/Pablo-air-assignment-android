@@ -1,10 +1,8 @@
-package com.kusitms.assignmentandroid;
+package com.kusitms.assignmentandroid.view;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -17,8 +15,9 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+import com.kusitms.assignmentandroid.utils.PrefsHelper;
 import com.kusitms.assignmentandroid.databinding.FragmentHomeBinding;
-import com.kusitms.assignmentandroid.dto.SerialNumberResult;
+import com.kusitms.assignmentandroid.retrofit.dto.SerialNumberResult;
 import com.kusitms.assignmentandroid.retrofit.RetrofitAPI;
 import com.kusitms.assignmentandroid.retrofit.RetrofitClient;
 

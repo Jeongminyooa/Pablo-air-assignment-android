@@ -1,17 +1,16 @@
-package com.kusitms.assignmentandroid;
+package com.kusitms.assignmentandroid.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import com.kakao.sdk.user.UserApiClient;
+import com.kusitms.assignmentandroid.utils.PrefsHelper;
 import com.kusitms.assignmentandroid.databinding.ActivityLoginBinding;
-import com.kusitms.assignmentandroid.databinding.ActivityMainBinding;
-import com.kusitms.assignmentandroid.dto.LoginResult;
+import com.kusitms.assignmentandroid.retrofit.dto.LoginResult;
 import com.kusitms.assignmentandroid.retrofit.RetrofitAPI;
 import com.kusitms.assignmentandroid.retrofit.RetrofitClient;
 

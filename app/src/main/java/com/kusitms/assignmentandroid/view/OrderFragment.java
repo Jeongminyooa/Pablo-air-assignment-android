@@ -1,4 +1,4 @@
-package com.kusitms.assignmentandroid;
+package com.kusitms.assignmentandroid.view;
 
 import android.os.Bundle;
 
@@ -10,8 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.kusitms.assignmentandroid.adapter.OrderAdapter;
 import com.kusitms.assignmentandroid.databinding.FragmentOrderBinding;
-import com.kusitms.assignmentandroid.dto.ItemVO;
+import com.kusitms.assignmentandroid.retrofit.dto.ItemVO;
 
 import java.util.ArrayList;
 
