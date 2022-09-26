@@ -2,6 +2,7 @@ package com.kusitms.assignmentandroid.retrofit;
 
 import com.kusitms.assignmentandroid.retrofit.dto.ApiResponse;
 import com.kusitms.assignmentandroid.retrofit.dto.LoginResult;
+import com.kusitms.assignmentandroid.retrofit.dto.OrderDetailVO;
 import com.kusitms.assignmentandroid.retrofit.dto.OrderItemVO;
 import com.kusitms.assignmentandroid.retrofit.dto.OrderRequest;
 import com.kusitms.assignmentandroid.retrofit.dto.SerialNumberResult;
@@ -26,5 +27,8 @@ public interface RetrofitAPI {
 
     @POST("/order")
     Call<ApiResponse<Long>> postOrder(@Body OrderRequest req);
+
+    @GET("/order")
+    Call<ApiResponse<ArrayList<OrderDetailVO>>> getOrderDetailList();
 
 }
