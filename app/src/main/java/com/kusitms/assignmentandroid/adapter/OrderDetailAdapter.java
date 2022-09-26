@@ -1,9 +1,10 @@
 package com.kusitms.assignmentandroid.adapter;
 
-import static com.kusitms.assignmentandroid.utils.QRCodeHelper.getQRImage;
+import static com.kusitms.assignmentandroid.utils.QRCodeUtil.getQRImage;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +22,7 @@ import com.kusitms.assignmentandroid.retrofit.RetrofitAPI;
 import com.kusitms.assignmentandroid.retrofit.RetrofitClient;
 import com.kusitms.assignmentandroid.retrofit.dto.ApiResponse;
 import com.kusitms.assignmentandroid.retrofit.dto.OrderDetailVO;
+import com.kusitms.assignmentandroid.utils.AES256Util;
 import com.kusitms.assignmentandroid.utils.PrefsHelper;
 
 import java.io.IOException;
@@ -37,6 +40,8 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
     private Context context;
 
     private RetrofitAPI retrofitAPI;
+
+    private AES256Util aes256Util;
 
     public OrderDetailAdapter(Context context, ArrayList<OrderDetailVO> items) {
         this.context = context;
@@ -100,6 +105,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
         if (retrofitClient != null) {
             retrofitAPI = RetrofitClient.getRetrofitAPI(PrefsHelper.read("token", ""));
             retrofitAPI.getSerialNumber().enqueue(new Callback<ApiResponse<String>>() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onResponse(Call<ApiResponse<String>> call, Response<ApiResponse<String>> response) {
                     ApiResponse<String> result = response.body();
@@ -114,6 +120,9 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
 
                     Log.d(TAG, result.toString());
 
+                    // 복호화 - 암호화
+                    String serialNumber = aes256Util.transferKey(result.getData());
+
                     // QR 다이얼로그
                     AlertDialog dig = new AlertDialog.Builder(context)
                             .setTitle("QR 인증")
@@ -122,7 +131,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
                             .create();
 
                     ImageView iv = new ImageView(context);
-                    iv.setImageBitmap(getQRImage(result.getData()));
+                    iv.setImageBitmap(getQRImage(serialNumber));
                     dig.setView(iv);
 
                     dig.show();

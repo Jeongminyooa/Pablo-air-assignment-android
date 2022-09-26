@@ -10,7 +10,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
-public class QRCodeHelper {
+public class QRCodeUtil {
 
 
     public static Bitmap getQRImage(String serialNumber) {
