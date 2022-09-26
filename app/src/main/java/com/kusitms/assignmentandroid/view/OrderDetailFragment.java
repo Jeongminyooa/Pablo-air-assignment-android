@@ -10,20 +10,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.kusitms.assignmentandroid.adapter.OrderAdapter;
-import com.kusitms.assignmentandroid.databinding.FragmentOrderBinding;
-import com.kusitms.assignmentandroid.retrofit.dto.ItemVO;
+import com.kusitms.assignmentandroid.adapter.OrderDetailAdapter;
+import com.kusitms.assignmentandroid.databinding.FragmentOrderDetailBinding;
+import com.kusitms.assignmentandroid.retrofit.dto.OrderDetailVO;
 
 import java.util.ArrayList;
 
 
-public class OrderFragment extends Fragment {
+public class OrderDetailFragment extends Fragment {
 
-    private FragmentOrderBinding binding;
-    private ArrayList<ItemVO> items;
-    private OrderAdapter orderAdapter;
+    private FragmentOrderDetailBinding binding;
+    private ArrayList<OrderDetailVO> items;
+    private OrderDetailAdapter orderAdapter;
 
-    public OrderFragment() {
+    public OrderDetailFragment() {
         // Required empty public constructor
     }
 
@@ -32,19 +32,18 @@ public class OrderFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         items = new ArrayList<>();
-        items.add(new ItemVO("세븐일레븐 여주점", "배송 완료"));
-        items.add(new ItemVO("세븐일레븐 송도점", "배송중"));
+        items.add(new OrderDetailVO("세븐일레븐 여주점", "배송 완료"));
+        items.add(new OrderDetailVO("세븐일레븐 송도점", "배송중"));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentOrderBinding.inflate(inflater);
+        binding = FragmentOrderDetailBinding.inflate(inflater);
 
         // 어댑터 생성
-        orderAdapter = new OrderAdapter(items);
+        orderAdapter = new OrderDetailAdapter(items);
         binding.recyclerViewOrder.setAdapter(orderAdapter);
-
 
         return binding.getRoot();
     }
