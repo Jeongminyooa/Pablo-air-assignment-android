@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationBarView;
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                                 .commit();
                         return true;
                     case R.id.tab_order:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.lyHome, new OrderFragment())
+                        getSupportFragmentManager().beginTransaction().replace(R.id.lyHome, new OrderDetailFragment())
                                 .commit();
                         return true;
                     case R.id.tab_mypage:

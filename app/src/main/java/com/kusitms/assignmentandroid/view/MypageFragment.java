@@ -19,6 +19,7 @@ import com.kusitms.assignmentandroid.R;
 import com.kusitms.assignmentandroid.databinding.FragmentMypageBinding;
 import com.kusitms.assignmentandroid.retrofit.RetrofitAPI;
 import com.kusitms.assignmentandroid.retrofit.RetrofitClient;
+import com.kusitms.assignmentandroid.retrofit.dto.ApiResponse;
 import com.kusitms.assignmentandroid.retrofit.dto.SerialNumberResult;
 import com.kusitms.assignmentandroid.utils.PrefsHelper;
 
@@ -49,7 +50,6 @@ public class MypageFragment extends Fragment {
         binding = FragmentMypageBinding.inflate(getLayoutInflater());
 
         String name = PrefsHelper.read("nickName", "");
-        Log.d(TAG, name);
         binding.tvNickname.setText(name);
 
         loadSerialNumber();
@@ -68,10 +68,12 @@ public class MypageFragment extends Fragment {
 
         if (retrofitClient != null) {
             retrofitAPI = RetrofitClient.getRetrofitAPI(PrefsHelper.read("token", ""));
-            retrofitAPI.getSerialNumber().enqueue(new Callback<SerialNumberResult>() {
+            retrofitAPI.getSerialNumber().enqueue(new Callback<ApiResponse<String>>() {
                 @Override
-                public void onResponse(Call<SerialNumberResult> call, Response<SerialNumberResult> response) {
-                    SerialNumberResult result = response.body();
+                public void onResponse(Call<ApiResponse<String>> call, Response<ApiResponse<String>> response) {
+                    ApiResponse<String> result = response.body();
+
+                    Log.d(TAG, result.toString());
 
                     if(!response.isSuccessful()) {
                         try {
@@ -86,7 +88,7 @@ public class MypageFragment extends Fragment {
                 }
 
                 @Override
-                public void onFailure(Call<SerialNumberResult> call, Throwable t) {
+                public void onFailure(Call<ApiResponse<String>> call, Throwable t) {
                     Log.e(TAG, t.getMessage());
                 }
             });
@@ -110,5 +112,11 @@ public class MypageFragment extends Fragment {
         }
 
         return null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
     }
 }
