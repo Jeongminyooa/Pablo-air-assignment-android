@@ -63,8 +63,9 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.View
                 if(count == 0) {
                    return;
                 }
-                binding.tvCnt.setText(String.valueOf(count - 1));
+                binding.tvCnt.setText(String.valueOf(--count));
                 mCallBack.onCalculateTotalPrice(Integer.parseInt(binding.tvOrderPrice.getText().toString()), false);
+                mCallBack.onClickOrderItemCount(item.getId(), count);
             });
 
             binding.btnPlusCnt.setOnClickListener(v -> {
@@ -72,13 +73,15 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.View
                 if(count > 100) {
                     return;
                 }
-                binding.tvCnt.setText(String.valueOf(count + 1));
+                binding.tvCnt.setText(String.valueOf(++count));
                 mCallBack.onCalculateTotalPrice(Integer.parseInt(binding.tvOrderPrice.getText().toString()), true);
+                mCallBack.onClickOrderItemCount(item.getId(), count);
             });
         }
     }
 
     public interface OnItemClick {
         void onCalculateTotalPrice(int price, boolean isPlus);
+        void onClickOrderItemCount(Long itemId, int count);
     }
 }
