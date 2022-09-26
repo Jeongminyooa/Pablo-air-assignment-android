@@ -20,7 +20,7 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private static final String TAG = "사용자";
+    private static final String TAG = "LoginActivity";
     private ActivityLoginBinding binding;
 
     private RetrofitAPI retrofitAPI;

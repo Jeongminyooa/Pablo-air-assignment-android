@@ -19,6 +19,8 @@ android {
 
         buildConfigField "String", "KAKAO_API_KEY", properties["KAKAO_API_KEY"]
         buildConfigField "String", "BASE_URL", properties["BASE_URL"]
+        buildConfigField "String", "AES_SERVER_KEY", properties["AES_SERVER_KEY"]
+        buildConfigField "String", "AES_CLIENT_KEY", properties["AES_CLIENT_KEY"]
 
     }
 

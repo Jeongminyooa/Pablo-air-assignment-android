@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationBarView;
@@ -35,12 +34,15 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId()) {
                     case R.id.tab_home:
-                        Log.d(TAG, "tab_home");
                         getSupportFragmentManager().beginTransaction().replace(R.id.lyHome, new HomeFragment())
                                 .commit();
                         return true;
                     case R.id.tab_order:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.lyHome, new OrderFragment())
+                        getSupportFragmentManager().beginTransaction().replace(R.id.lyHome, new OrderDetailFragment())
+                                .commit();
+                        return true;
+                    case R.id.tab_mypage:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.lyHome, new MypageFragment())
                                 .commit();
                         return true;
                 }

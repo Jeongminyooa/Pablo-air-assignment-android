@@ -4,9 +4,13 @@
     <item
         android:id="@+id/tab_home"
         android:icon="@drawable/ic_home"
-        android:title="home" />
+        android:title="홈" />
     <item
         android:id="@+id/tab_order"
         android:icon="@drawable/ic_order"
-        android:title="order" />
+        android:title="주문내역" />
+    <item
+        android:id="@+id/tab_mypage"
+        android:icon="@drawable/ic_mypage"
+        android:title="마이페이지" />
 </menu>
