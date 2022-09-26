@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/imageView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/seveneleven_logo" />
 
@@ -24,7 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="2"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
@@ -48,14 +49,14 @@
 
         <Button
             android:id="@+id/btnMinusCnt"
-            android:layout_width="10dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:text="-"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tvCnt"
@@ -63,21 +64,22 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_marginBottom="5dp"
-            android:layout_weight="0"
+            android:layout_weight="1"
+            android:gravity="center|center_horizontal"
             android:text="0"
             android:textColor="#000000"
             android:textSize="25dp" />
 
         <Button
             android:id="@+id/btnPlusCnt"
-            android:layout_width="10dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:text="+"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
     </LinearLayout>
 
     <View

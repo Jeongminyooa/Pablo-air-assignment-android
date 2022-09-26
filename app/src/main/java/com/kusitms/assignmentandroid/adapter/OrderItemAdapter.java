@@ -1,5 +1,6 @@
 package com.kusitms.assignmentandroid.adapter;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +20,11 @@ import java.util.ArrayList;
 public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.ViewHolder> {
 
     private ArrayList<OrderItemVO> items;
+    private OnItemClick mCallBack;
 
-    public OrderItemAdapter(ArrayList<OrderItemVO> items) {
+    public OrderItemAdapter(Context context, ArrayList<OrderItemVO> items) {
         this.items = items;
+        this.mCallBack = (OnItemClick) context;
     }
 
     @NonNull
@@ -51,26 +54,31 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.View
         }
 
         void bindItem(OrderItemVO item) {
-
-            Log.d("뿌잉", item.getName());
             binding.tvOrderStoreName.setText(item.getName());
             binding.tvOrderPrice.setText(item.getPrice());
 
-            int count = Integer.parseInt(binding.tvCnt.getText().toString());
             // 수량
             binding.btnMinusCnt.setOnClickListener(v -> {
+                int count = Integer.parseInt(binding.tvCnt.getText().toString());
                 if(count == 0) {
                    return;
                 }
                 binding.tvCnt.setText(String.valueOf(count - 1));
+                mCallBack.onCalculateTotalPrice(Integer.parseInt(binding.tvOrderPrice.getText().toString()), false);
             });
 
             binding.btnPlusCnt.setOnClickListener(v -> {
+                int count = Integer.parseInt(binding.tvCnt.getText().toString());
                 if(count > 100) {
                     return;
                 }
                 binding.tvCnt.setText(String.valueOf(count + 1));
+                mCallBack.onCalculateTotalPrice(Integer.parseInt(binding.tvOrderPrice.getText().toString()), true);
             });
         }
+    }
+
+    public interface OnItemClick {
+        void onCalculateTotalPrice(int price, boolean isPlus);
     }
 }

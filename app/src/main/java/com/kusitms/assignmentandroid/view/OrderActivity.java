@@ -15,13 +15,14 @@ import com.kusitms.assignmentandroid.retrofit.dto.LoginResult;
 import com.kusitms.assignmentandroid.retrofit.dto.OrderItemVO;
 import com.kusitms.assignmentandroid.utils.PrefsHelper;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OrderActivity extends AppCompatActivity {
+public class OrderActivity extends AppCompatActivity implements OrderItemAdapter.OnItemClick {
 
     private static final String TAG = "OrderActivity";
     private ActivityOrderBinding binding;
@@ -39,14 +40,11 @@ public class OrderActivity extends AppCompatActivity {
 
         items = new ArrayList<>();
 
+        binding.tvTotalPrice.setText("0");
+
         // 통신
         loadOrderItemResult();
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        binding.recyclerOrderItem.setAdapter(orderItemAdapter);
     }
 
     // 주문 아이템 가져오기 통신
@@ -59,11 +57,20 @@ public class OrderActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<ApiResponse<ArrayList<OrderItemVO>>> call, Response<ApiResponse<ArrayList<OrderItemVO>>> response) {
                     ApiResponse<ArrayList<OrderItemVO>> result = response.body();
+
+                    if(!response.isSuccessful()) {
+                        try {
+                            Log.d(TAG, response.errorBody().string());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
                     Log.d(TAG, result.toString());
 
                     items = result.getData();
 
-                    orderItemAdapter = new OrderItemAdapter(items);
+                    orderItemAdapter = new OrderItemAdapter(OrderActivity.this, items);
+                    binding.recyclerOrderItem.setAdapter(orderItemAdapter);
                 }
 
                 @Override
@@ -78,5 +85,20 @@ public class OrderActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         binding = null;
+    }
+
+    // adapter 데이터로 total 계산
+    @Override
+    public void onCalculateTotalPrice(int price, boolean isPlus) {
+        int presentPrice = Integer.parseInt(binding.tvTotalPrice.getText().toString());
+        String result = "0";
+
+        if(isPlus) {
+            result = String.valueOf(presentPrice + price);
+        } else {
+            result = String.valueOf(presentPrice - price);
+        }
+
+        binding.tvTotalPrice.setText(result);
     }
 }

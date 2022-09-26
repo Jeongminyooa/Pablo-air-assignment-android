@@ -73,8 +73,6 @@ public class MypageFragment extends Fragment {
                 public void onResponse(Call<ApiResponse<String>> call, Response<ApiResponse<String>> response) {
                     ApiResponse<String> result = response.body();
 
-                    Log.d(TAG, result.toString());
-
                     if(!response.isSuccessful()) {
                         try {
                             Log.d(TAG, response.errorBody().string());
@@ -82,6 +80,9 @@ public class MypageFragment extends Fragment {
                             e.printStackTrace();
                         }
                     }
+
+                    Log.d(TAG, result.toString());
+
                     serialNumber = result.getData();
 
                     binding.ivQRCode.setImageBitmap(getQRImage());
