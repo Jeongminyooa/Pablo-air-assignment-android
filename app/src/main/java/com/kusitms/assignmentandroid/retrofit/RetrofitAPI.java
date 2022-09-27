@@ -13,14 +13,15 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface RetrofitAPI {
     @GET("/login/oauth/kakao")
     Call<LoginResult> getLoginUser(@Query("accessToken") String accessToken);
 
-    @GET("/serialNumber")
-    Call<ApiResponse<String>> getSerialNumber();
+    @GET("/serialNumber/{orderId}")
+    Call<ApiResponse<String>> getSerialNumber(@Path("orderId") Long orderId);
 
     @GET("/items")
     Call<ApiResponse<ArrayList<OrderItemVO>>> getItems();

@@ -46,6 +46,8 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
     public OrderDetailAdapter(Context context, ArrayList<OrderDetailVO> items) {
         this.context = context;
         this.items = items;
+
+        aes256Util = new AES256Util();
     }
 
     @NonNull
@@ -94,17 +96,17 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
 
             binding.btnOrderDetail.setOnClickListener(v -> {
                 // 나의 QR 확인이 가능한 다이얼로그 출력
-                loadSerialNumber();
+                loadSerialNumber(item.getOrderId());
             });
         }
     }
 
-    public void loadSerialNumber() {
+    public void loadSerialNumber(Long orderId) {
         RetrofitClient retrofitClient = RetrofitClient.getInstance();
 
         if (retrofitClient != null) {
             retrofitAPI = RetrofitClient.getRetrofitAPI(PrefsHelper.read("token", ""));
-            retrofitAPI.getSerialNumber().enqueue(new Callback<ApiResponse<String>>() {
+            retrofitAPI.getSerialNumber(orderId).enqueue(new Callback<ApiResponse<String>>() {
                 @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onResponse(Call<ApiResponse<String>> call, Response<ApiResponse<String>> response) {

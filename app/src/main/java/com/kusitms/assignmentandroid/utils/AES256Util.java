@@ -50,9 +50,9 @@ public class AES256Util {
         // 보안을 위해 서버키로 복호화 후 클라이언트키로 암호화
         String serialNumber = null;
 
+        Log.d(TAG, text);
         try {
             serialNumber = this.decrypt(text, server_key);
-
             serialNumber = this.encrypt(serialNumber, client_key);
         } catch (Exception e) {
             e.printStackTrace();

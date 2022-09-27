@@ -10,15 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.kusitms.assignmentandroid.databinding.FragmentHomeBinding;
-import com.kusitms.assignmentandroid.retrofit.RetrofitAPI;
 
 
 public class HomeFragment extends Fragment {
 
-    private static final String TAG = "HomeFragment";
     private FragmentHomeBinding binding;
-
-    private RetrofitAPI retrofitAPI;
 
     public HomeFragment() {
         // Required empty public constructor

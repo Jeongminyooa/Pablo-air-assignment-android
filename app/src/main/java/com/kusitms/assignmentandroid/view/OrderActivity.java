@@ -2,9 +2,7 @@ package com.kusitms.assignmentandroid.view;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +13,6 @@ import com.kusitms.assignmentandroid.databinding.ActivityOrderBinding;
 import com.kusitms.assignmentandroid.retrofit.RetrofitAPI;
 import com.kusitms.assignmentandroid.retrofit.RetrofitClient;
 import com.kusitms.assignmentandroid.retrofit.dto.ApiResponse;
-import com.kusitms.assignmentandroid.retrofit.dto.LoginResult;
 import com.kusitms.assignmentandroid.retrofit.dto.OrderItemVO;
 import com.kusitms.assignmentandroid.retrofit.dto.OrderRequest;
 import com.kusitms.assignmentandroid.utils.PrefsHelper;
@@ -23,10 +20,8 @@ import com.kusitms.assignmentandroid.utils.PrefsHelper;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;

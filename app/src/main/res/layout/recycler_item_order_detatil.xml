@@ -66,7 +66,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/style_ok_button"
             android:outlineProvider="none"
-            android:text="상세 내역"
+            android:text="잠금 해제"
             android:textColor="@color/white" />
 
     </LinearLayout>
